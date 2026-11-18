@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/logo.svg" width="200" alt="RSICrawl logo: a round spider-robot with a magnifying glass, circled by a self-improvement arrow"></p>
+<p align="center"><img src="assets/logo.svg" width="200" alt="RSICrawl logo: an armored spider-robot with a glowing visor inside a neon self-improvement ring"></p>
 
 <h1 align="center">RSICrawl</h1>
 <p align="center"><b>A web crawler that improves itself.</b><br>

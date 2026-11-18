@@ -1,66 +1,90 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="t d">
   <title id="t">RSICrawl logo</title>
-  <desc id="d">A round, friendly spider-robot holding a magnifying glass, circled by a self-improvement arrow.</desc>
+  <desc id="d">An angular spider-robot with a glowing visor, inside a neon self-improvement ring.</desc>
   <defs>
-    <radialGradient id="body" cx="42%" cy="36%" r="70%">
-      <stop offset="0" stop-color="#5EE6D0"/>
-      <stop offset="0.55" stop-color="#1FB5A3"/>
-      <stop offset="1" stop-color="#127A70"/>
+    <radialGradient id="bg" cx="50%" cy="45%" r="60%">
+      <stop offset="0" stop-color="#16213A"/>
+      <stop offset="1" stop-color="#070B16"/>
     </radialGradient>
-    <radialGradient id="lens" cx="40%" cy="35%" r="65%">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"/>
-      <stop offset="1" stop-color="#BFEFFF" stop-opacity="0.55"/>
-    </radialGradient>
-    <marker id="head" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.4" markerHeight="3.4" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#FF8A3D"/>
-    </marker>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00F0FF"/>
+      <stop offset="0.5" stop-color="#7B5CFF"/>
+      <stop offset="1" stop-color="#FF2BD6"/>
+    </linearGradient>
+    <linearGradient id="armor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A3552"/>
+      <stop offset="1" stop-color="#121A2E"/>
+    </linearGradient>
+    <linearGradient id="visor" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00F0FF"/>
+      <stop offset="1" stop-color="#FF2BD6"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
 
-  <!-- self-improvement orbit: an almost-closed loop that ends in an arrow -->
-  <path d="M 256 40 A 216 216 0 1 1 74 140" fill="none" stroke="#FF8A3D" stroke-width="22" stroke-linecap="round" marker-end="url(#head)"/>
-  <circle cx="256" cy="40" r="11" fill="#FF8A3D"/>
+  <!-- dark badge -->
+  <circle cx="256" cy="256" r="248" fill="url(#bg)"/>
 
-  <!-- eight little legs (crawler) -->
-  <g stroke="#0E5E56" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M190 250 L130 215 L100 250"/>
-    <path d="M182 285 L118 275 L96 312"/>
-    <path d="M188 320 L132 335 L122 375"/>
-    <path d="M206 350 L168 385 L172 420"/>
-    <path d="M322 250 L382 215 L412 250"/>
-    <path d="M330 285 L394 275 L416 312"/>
-    <path d="M324 320 L380 335 L390 375"/>
-    <path d="M306 350 L344 385 L340 420"/>
-  </g>
-  <g fill="#0E5E56">
-    <circle cx="100" cy="250" r="9"/><circle cx="96" cy="312" r="9"/><circle cx="122" cy="375" r="9"/><circle cx="172" cy="420" r="9"/>
-    <circle cx="412" cy="250" r="9"/><circle cx="416" cy="312" r="9"/><circle cx="390" cy="375" r="9"/><circle cx="340" cy="420" r="9"/>
+  <!-- faint web / circuit grid -->
+  <g stroke="#2B3A63" stroke-width="1.5" fill="none" opacity="0.7">
+    <circle cx="256" cy="262" r="70"/><circle cx="256" cy="262" r="120"/><circle cx="256" cy="262" r="170"/>
+    <path d="M256 92 V432 M86 262 H426 M136 142 L376 382 M376 142 L136 382"/>
   </g>
 
-  <!-- antenna with a tiny spark -->
-  <path d="M256 186 L256 150" stroke="#0E5E56" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="256" cy="142" r="14" fill="#FFD23F" stroke="#0E5E56" stroke-width="6"/>
-
-  <!-- round body -->
-  <circle cx="256" cy="290" r="104" fill="url(#body)" stroke="#0E5E56" stroke-width="10"/>
-  <ellipse cx="222" cy="236" rx="34" ry="18" fill="#FFFFFF" opacity="0.35" transform="rotate(-25 222 236)"/>
-
-  <!-- face -->
-  <g>
-    <circle cx="222" cy="276" r="30" fill="#FFFFFF" stroke="#0E5E56" stroke-width="6"/>
-    <circle cx="292" cy="276" r="30" fill="#FFFFFF" stroke="#0E5E56" stroke-width="6"/>
-    <circle cx="230" cy="281" r="14" fill="#1B2430"/>
-    <circle cx="300" cy="281" r="14" fill="#1B2430"/>
-    <circle cx="235" cy="275" r="5" fill="#FFFFFF"/>
-    <circle cx="305" cy="275" r="5" fill="#FFFFFF"/>
-    <path d="M232 330 Q257 352 282 330" fill="none" stroke="#1B2430" stroke-width="8" stroke-linecap="round"/>
-    <circle cx="196" cy="320" r="11" fill="#FF8A9A" opacity="0.7"/>
-    <circle cx="318" cy="320" r="11" fill="#FF8A9A" opacity="0.7"/>
+  <!-- recursive ring: three arcs, each chasing the next (iterate -> learn -> improve) -->
+  <defs>
+    <marker id="hA" viewBox="0 0 10 10" refX="3" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#FF2BD6"/></marker>
+    <marker id="hB" viewBox="0 0 10 10" refX="3" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7B5CFF"/></marker>
+    <marker id="hC" viewBox="0 0 10 10" refX="3" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#00F0FF"/></marker>
+    <linearGradient id="arcA" x1="256" y1="44" x2="430" y2="190" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00F0FF"/><stop offset="1" stop-color="#FF2BD6"/></linearGradient>
+    <linearGradient id="arcB" x1="440" y1="330" x2="80" y2="380" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FF2BD6"/><stop offset="1" stop-color="#7B5CFF"/></linearGradient>
+    <linearGradient id="arcC" x1="70" y1="330" x2="200" y2="50" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7B5CFF"/><stop offset="1" stop-color="#00F0FF"/></linearGradient>
+  </defs>
+  <g fill="none" stroke-width="14" stroke-linecap="round" filter="url(#glow)">
+    <path d="M 270 44.5 A 212 212 0 0 1 444 160" stroke="url(#arcA)" marker-end="url(#hA)"/>
+    <path d="M 456 330 A 212 212 0 0 1 80 382" stroke="url(#arcB)" marker-end="url(#hB)"/>
+    <path d="M 56 330 A 212 212 0 0 1 200 52" stroke="url(#arcC)" marker-end="url(#hC)"/>
   </g>
 
-  <!-- magnifying glass held up front -->
-  <g transform="rotate(-20 360 380)">
-    <path d="M360 405 L360 470" stroke="#7A4B2A" stroke-width="20" stroke-linecap="round"/>
-    <circle cx="360" cy="372" r="44" fill="url(#lens)" stroke="#FF8A3D" stroke-width="13"/>
-    <path d="M341 356 Q350 344 364 342" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <!-- legs: sharp segmented, neon joints -->
+  <g stroke="#9FB3E0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <polyline points="214,242 150,196 118,214 96,262"/>
+    <polyline points="206,270 136,252 104,292 98,330"/>
+    <polyline points="210,298 146,316 128,360 140,392"/>
+    <polyline points="226,320 186,366 190,410 210,432"/>
+    <polyline points="298,242 362,196 394,214 416,262"/>
+    <polyline points="306,270 376,252 408,292 414,330"/>
+    <polyline points="302,298 366,316 384,360 372,392"/>
+    <polyline points="286,320 326,366 322,410 302,432"/>
   </g>
+  <g fill="#00F0FF" filter="url(#softglow)">
+    <circle cx="150" cy="196" r="6"/><circle cx="136" cy="252" r="6"/><circle cx="146" cy="316" r="6"/><circle cx="186" cy="366" r="6"/>
+  </g>
+  <g fill="#FF2BD6" filter="url(#softglow)">
+    <circle cx="362" cy="196" r="6"/><circle cx="376" cy="252" r="6"/><circle cx="366" cy="316" r="6"/><circle cx="326" cy="366" r="6"/>
+  </g>
+
+  <!-- abdomen (rear) -->
+  <path d="M256 300 L306 330 L296 392 L256 414 L216 392 L206 330 Z" fill="url(#armor)" stroke="url(#neon)" stroke-width="4"/>
+  <path d="M256 322 L278 336 L274 372 L256 384 L238 372 L234 336 Z" fill="none" stroke="#7B5CFF" stroke-width="3" opacity="0.9"/>
+
+  <!-- head / thorax: angular armored hexagon -->
+  <path d="M256 168 L320 204 L326 266 L256 312 L186 266 L192 204 Z" fill="url(#armor)" stroke="url(#neon)" stroke-width="5"/>
+  <path d="M256 168 L256 196 M192 204 L214 214 M320 204 L298 214" stroke="#3E4C74" stroke-width="3"/>
+
+  <!-- glowing visor -->
+  <path d="M206 236 L306 236 L296 262 L216 262 Z" fill="url(#visor)" filter="url(#glow)"/>
+  <rect x="226" y="244" width="22" height="8" rx="2" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="264" y="244" width="22" height="8" rx="2" fill="#FFFFFF" opacity="0.9"/>
+
+  <!-- antenna sensor -->
+  <path d="M256 168 L256 138" stroke="#9FB3E0" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="256" cy="132" r="8" fill="#00F0FF" filter="url(#glow)"/>
 </svg>

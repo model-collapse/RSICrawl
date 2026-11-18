@@ -1,0 +1,199 @@
+{
+ "solved": 18,
+ "of": 24,
+ "rate": 0.75,
+ "per_pattern": {
+  "127.0.0.1:18003/items/{num}/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18003/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18009/products/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T0",
+   "archetype": "A4",
+   "family": "gql",
+   "control": false
+  },
+  "127.0.0.1:18009/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A4",
+   "family": "gql",
+   "control": false
+  },
+  "127.0.0.1:18010/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A5",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18010/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A5",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18011/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A6",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18011/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A6",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18016/items/{num}/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A1",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18016/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A1",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18019/p/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18019/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18022/{num}/{num}/{str}/": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A3",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18022/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A3",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18026/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A6",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18026/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A6",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18032/p/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18032/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18033/{num}/{num}/{str}/": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A3",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18033/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A3",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18034/items/{num}/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T0",
+   "archetype": "A3",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18034/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A3",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18035/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A3",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18035/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A3",
+   "family": "spa",
+   "control": false
+  }
+ }
+}

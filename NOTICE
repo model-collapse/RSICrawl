@@ -1,0 +1,10 @@
+RSICrawl
+Copyright 2026 The RSICrawl Authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party software used at runtime but NOT distributed with this repository:
+- Lightpanda browser (https://github.com/lightpanda-io/browser), AGPL-3.0. RSICrawl starts the
+  Lightpanda binary as a separate process and talks to it over the Chrome DevTools Protocol;
+  it does not include, link or modify Lightpanda code. Users install Lightpanda themselves.
+- Python dependencies listed in pyproject.toml, under their respective licenses.

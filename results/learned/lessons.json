@@ -1,0 +1,119 @@
+[
+ {
+  "symptom": "Page HTML is an empty shell (empty main, inline script) with markers api-session, api-v, csrf-meta suggesting auth-gated API, but the record data loads from a JSON endpoint.",
+  "site_markers": [
+   "api-session",
+   "api-v",
+   "csrf-meta",
+   "empty <main id=content>",
+   "inline script fetching /api/v1/items/{id}",
+   "Server: Python aiohttp"
+  ],
+  "hypotheses_tried": [
+   "Page is client-rendered; data comes from a same-origin JSON API keyed by the last URL segment",
+   "Session, CSRF token, or request signature might be required (markers suggested it)",
+   "Checked raw HTML and the API request headers to see if anything extra was needed"
+  ],
+  "what_worked": "A single unauthenticated GET to {{origin}}/api/v1/items/{{last}} with Accept: application/json returned full data. Mapping title, paragraphs, price, sku, category, rating, and related links from JSON matched 3/3 samples offline and live (F1 1.0).",
+  "generality": "family",
+  "tags": [
+   "spa",
+   "json-api",
+   "empty-shell",
+   "network-log",
+   "plain-mode",
+   "tier-T0",
+   "no-auth"
+  ],
+  "pattern_id": "127.0.0.1:18023/item/{num}",
+  "outcome": "submitted",
+  "t": 1794929867.1686788
+ },
+ {
+  "symptom": "Item page main content is empty in HTML (main#content has no text); the body comes from a JSON API call that needs an X-CSRF-Token header.",
+  "site_markers": [
+   "api-session",
+   "api-v",
+   "csrf-meta",
+   "meta[name=csrf-token]",
+   "/api/v1/items/{id}"
+  ],
+  "hypotheses_tried": [
+   "Inspected the page's network requests to find the JSON endpoint and its non-standard headers",
+   "Checked whether the raw HTML already contains the content (it does not; the main element is empty)",
+   "Compared the API request headers against the CSRF meta token value"
+  ],
+  "what_worked": "Two-step recipe: GET the page and extract the csrf-token meta content, then GET /api/v1/items/{id} with X-CSRF-Token and Referer set, parsing JSON for title, paragraphs, specs and related links. Passed 3/3 samples with F1 1.0.",
+  "generality": "family",
+  "tags": [
+   "csrf-token",
+   "json-api",
+   "meta-token",
+   "two-step",
+   "js-rendered",
+   "item-pages"
+  ],
+  "pattern_id": "127.0.0.1:18025/item/{num}",
+  "outcome": "submitted",
+  "t": 1794929873.7215624
+ },
+ {
+  "symptom": "Item page HTML lacks the record content in the DOM; the data comes from a JSON XHR to /api/v1/items/{id} that requires an X-CSRF-Token header.",
+  "site_markers": [
+   "api-session",
+   "api-v",
+   "csrf-meta",
+   "meta[name=csrf-token]",
+   "/api/v1/items/"
+  ],
+  "hypotheses_tried": [
+   "Listed sample requests and found a Fetch to /api/v1/items/{id} with a nonstandard x-csrf-token header",
+   "Checked raw HTML and confirmed the token is in the meta csrf-token content attribute",
+   "Built a two-step recipe: GET page, extract csrf, then GET API with the header",
+   "Verified offline and live against 3 samples"
+  ],
+  "what_worked": "Two-step recipe: GET the item page, extract meta[name=csrf-token] content, pass it as X-CSRF-Token to the JSON API using the last URL segment as id. Mapped title, paragraphs, specs, and related links from JSON. Scored 1.0 on all samples offline and live.",
+  "generality": "family",
+  "tags": [
+   "csrf-token",
+   "json-api",
+   "two-step-fetch",
+   "meta-tag",
+   "header-injection",
+   "recipe-verified"
+  ],
+  "pattern_id": "127.0.0.1:18043/item/{num}",
+  "outcome": "submitted",
+  "t": 1794929874.5246248
+ },
+ {
+  "symptom": "Item page HTML has an empty <main id=content>; content loads via JS fetches. Slug is embedded in an inline window.__PAGE__ script and must be chained through lookup and records APIs.",
+  "site_markers": [
+   "api-config",
+   "csrf-meta",
+   "svc",
+   "window.__PAGE__",
+   "/api/config",
+   "/svc/v3/lookup",
+   "/svc/v3/records/"
+  ],
+  "hypotheses_tried": [
+   "Parse title and body from static HTML (empty main, so no content)",
+   "Fetch /api/config to get apiBase before calling the service (value was constant /svc/v3, so the call could be skipped)",
+   "Search response bodies for apiBase to trace the JS data flow"
+  ],
+  "what_worked": "Regex the slug from window.__PAGE__ in page HTML, call /svc/v3/lookup?slug= for internalId, then /svc/v3/records/{id} for label, text, attrs, and links. Passed offline and live on 3 samples with F1 1.0.",
+  "generality": "site",
+  "tags": [
+   "js-rendered",
+   "inline-state",
+   "json-api-chain",
+   "regex-extract",
+   "recipe-submitted",
+   "tier-T1"
+  ],
+  "pattern_id": "127.0.0.1:18012/item/{num}",
+  "outcome": "submitted",
+  "t": 1794929891.8202705
+ }
+]

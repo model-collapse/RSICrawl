@@ -1,0 +1,231 @@
+{
+ "solved": 24,
+ "of": 28,
+ "rate": 0.857,
+ "per_pattern": {
+  "127.0.0.1:18001/items/{num}/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A1",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18001/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A1",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18004/p/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18004/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18005/{num}/{num}/{str}/": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18005/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18012/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A7",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18012/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A7",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18018/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18018/items/{num}/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18020/{num}/{num}/{str}/": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18020/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "wp",
+   "control": false
+  },
+  "127.0.0.1:18021/items/{num}/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T0",
+   "archetype": "A3",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18021/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A3",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18023/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A3",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18023/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A3",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18024/products/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T0",
+   "archetype": "A4",
+   "family": "gql",
+   "control": false
+  },
+  "127.0.0.1:18024/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A4",
+   "family": "gql",
+   "control": false
+  },
+  "127.0.0.1:18025/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A5",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18025/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A5",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18038/items/{num}/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18038/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "next",
+   "control": false
+  },
+  "127.0.0.1:18039/p/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18039/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A2",
+   "family": "nuxt",
+   "control": false
+  },
+  "127.0.0.1:18043/item/{num}": {
+   "solved": false,
+   "origin": null,
+   "tier": null,
+   "archetype": "A5",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18043/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A5",
+   "family": "spa",
+   "control": false
+  },
+  "127.0.0.1:18044/products/{str}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T0",
+   "archetype": "A4",
+   "family": "gql",
+   "control": false
+  },
+  "127.0.0.1:18044/list?page={num}": {
+   "solved": true,
+   "origin": "analyzer",
+   "tier": "T1",
+   "archetype": "A4",
+   "family": "gql",
+   "control": false
+  }
+ }
+}

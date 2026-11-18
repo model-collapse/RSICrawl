@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="t d">
+  <title id="t">RSICrawl logo</title>
+  <desc id="d">A round, friendly spider-robot holding a magnifying glass, circled by a self-improvement arrow.</desc>
+  <defs>
+    <radialGradient id="body" cx="42%" cy="36%" r="70%">
+      <stop offset="0" stop-color="#5EE6D0"/>
+      <stop offset="0.55" stop-color="#1FB5A3"/>
+      <stop offset="1" stop-color="#127A70"/>
+    </radialGradient>
+    <radialGradient id="lens" cx="40%" cy="35%" r="65%">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#BFEFFF" stop-opacity="0.55"/>
+    </radialGradient>
+    <marker id="head" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.4" markerHeight="3.4" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FF8A3D"/>
+    </marker>
+  </defs>
+
+  <!-- self-improvement orbit: an almost-closed loop that ends in an arrow -->
+  <path d="M 256 40 A 216 216 0 1 1 74 140" fill="none" stroke="#FF8A3D" stroke-width="22" stroke-linecap="round" marker-end="url(#head)"/>
+  <circle cx="256" cy="40" r="11" fill="#FF8A3D"/>
+
+  <!-- eight little legs (crawler) -->
+  <g stroke="#0E5E56" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M190 250 L130 215 L100 250"/>
+    <path d="M182 285 L118 275 L96 312"/>
+    <path d="M188 320 L132 335 L122 375"/>
+    <path d="M206 350 L168 385 L172 420"/>
+    <path d="M322 250 L382 215 L412 250"/>
+    <path d="M330 285 L394 275 L416 312"/>
+    <path d="M324 320 L380 335 L390 375"/>
+    <path d="M306 350 L344 385 L340 420"/>
+  </g>
+  <g fill="#0E5E56">
+    <circle cx="100" cy="250" r="9"/><circle cx="96" cy="312" r="9"/><circle cx="122" cy="375" r="9"/><circle cx="172" cy="420" r="9"/>
+    <circle cx="412" cy="250" r="9"/><circle cx="416" cy="312" r="9"/><circle cx="390" cy="375" r="9"/><circle cx="340" cy="420" r="9"/>
+  </g>
+
+  <!-- antenna with a tiny spark -->
+  <path d="M256 186 L256 150" stroke="#0E5E56" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="256" cy="142" r="14" fill="#FFD23F" stroke="#0E5E56" stroke-width="6"/>
+
+  <!-- round body -->
+  <circle cx="256" cy="290" r="104" fill="url(#body)" stroke="#0E5E56" stroke-width="10"/>
+  <ellipse cx="222" cy="236" rx="34" ry="18" fill="#FFFFFF" opacity="0.35" transform="rotate(-25 222 236)"/>
+
+  <!-- face -->
+  <g>
+    <circle cx="222" cy="276" r="30" fill="#FFFFFF" stroke="#0E5E56" stroke-width="6"/>
+    <circle cx="292" cy="276" r="30" fill="#FFFFFF" stroke="#0E5E56" stroke-width="6"/>
+    <circle cx="230" cy="281" r="14" fill="#1B2430"/>
+    <circle cx="300" cy="281" r="14" fill="#1B2430"/>
+    <circle cx="235" cy="275" r="5" fill="#FFFFFF"/>
+    <circle cx="305" cy="275" r="5" fill="#FFFFFF"/>
+    <path d="M232 330 Q257 352 282 330" fill="none" stroke="#1B2430" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="196" cy="320" r="11" fill="#FF8A9A" opacity="0.7"/>
+    <circle cx="318" cy="320" r="11" fill="#FF8A9A" opacity="0.7"/>
+  </g>
+
+  <!-- magnifying glass held up front -->
+  <g transform="rotate(-20 360 380)">
+    <path d="M360 405 L360 470" stroke="#7A4B2A" stroke-width="20" stroke-linecap="round"/>
+    <circle cx="360" cy="372" r="44" fill="url(#lens)" stroke="#FF8A3D" stroke-width="13"/>
+    <path d="M341 356 Q350 344 364 342" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

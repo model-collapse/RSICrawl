@@ -1,0 +1,22 @@
+{
+ "results": [
+  {
+   "attempt": 0,
+   "episode": "improve-1794930222",
+   "end": "submitted",
+   "usd": 0.603,
+   "turns": 6,
+   "baseline_solved": 24,
+   "duration_s": 162.6,
+   "skill": "json_api_chain",
+   "solved_after": 28,
+   "newly_solved": [
+    "127.0.0.1:18012/item/{num}",
+    "127.0.0.1:18023/item/{num}",
+    "127.0.0.1:18025/item/{num}",
+    "127.0.0.1:18043/item/{num}"
+   ]
+  }
+ ],
+ "spend_usd": 0.603
+}

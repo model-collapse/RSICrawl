@@ -1,0 +1,343 @@
+{
+ "ldjson_product_article_item": {
+  "id": "ldjson_product_article_item",
+  "description": "Product pages with schema.org Product ld+json and server-rendered main#content > article.item (h1, div.body p, ul.specs li, div.related a).",
+  "detector": {
+   "html_regex": "application/ld\\+json[\\s\\S]*\"@type\": ?\"Product\"[\\s\\S]*<main id=\"content\"><article class=\"item\">"
+  },
+  "recipe": {
+   "id": "ldjson_product_article_item",
+   "pattern_id": "*",
+   "tier": "T1",
+   "origin": "playbook:ldjson_product_article_item",
+   "steps": [
+    {
+     "name": "page",
+     "method": "GET",
+     "url": "{{page_url}}",
+     "parse": "html"
+    }
+   ],
+   "output": {
+    "title": {
+     "step": "page",
+     "css": "body > main#content > article.item > h1",
+     "first": true
+    },
+    "main_text": [
+     {
+      "step": "page",
+      "css": "body > main#content > article.item > div.body > p",
+      "attr": "text"
+     },
+     {
+      "step": "page",
+      "css": "body > main#content > article.item > h1",
+      "attr": "text"
+     },
+     {
+      "step": "page",
+      "css": "body > main#content > article.item > ul.specs > li",
+      "attr": "text"
+     }
+    ],
+    "links": [
+     {
+      "step": "page",
+      "css": "body > main#content > article.item > div.related > a",
+      "attr": "href",
+      "abs": true
+     }
+    ]
+   }
+  },
+  "source_episode": "785775001b",
+  "state": "active",
+  "stats": {
+   "tried": 0,
+   "won": 0
+  },
+  "created": 1794929879.7395191
+ },
+ "nuxt_ssr_article_item": {
+  "id": "nuxt_ssr_article_item",
+  "description": "Nuxt SSR pages (window.__NUXT__ inline state) rendering a product/article in main#content > article.item; extract from server-rendered DOM.",
+  "detector": {
+   "html_regex": "<main id=\"content\"><article class=\"item\">[\\s\\S]*window\\.__NUXT__\\s*=",
+   "page_url_regex": "/p/[^/]+$"
+  },
+  "recipe": {
+   "tier": "T1",
+   "origin": "playbook:nuxt_ssr_article_item",
+   "steps": [
+    {
+     "name": "page",
+     "method": "GET",
+     "url": "{{page_url}}",
+     "parse": "html"
+    }
+   ],
+   "output": {
+    "title": {
+     "step": "page",
+     "css": "main#content > article.item > h1",
+     "first": true
+    },
+    "main_text": [
+     {
+      "step": "page",
+      "css": "main#content > article.item > div.body > p",
+      "attr": "text"
+     },
+     {
+      "step": "page",
+      "css": "main#content > article.item > h1",
+      "attr": "text"
+     },
+     {
+      "step": "page",
+      "css": "main#content > article.item > ul.specs > li",
+      "attr": "text"
+     }
+    ],
+    "links": [
+     {
+      "step": "page",
+      "css": "main#content > article.item > div.related > a",
+      "attr": "href",
+      "abs": true
+     }
+    ]
+   }
+  },
+  "source_episode": "67a2b49802",
+  "state": "active",
+  "stats": {
+   "tried": 0,
+   "won": 0
+  },
+  "created": 1794929885.705784
+ },
+ "graphql_product_slug": {
+  "id": "graphql_product_slug",
+  "description": "JS-rendered product pages whose inline config holds a GraphQL endpoint ('api') and product(slug) query; fetch via POST with slug = last path segment.",
+  "detector": {
+   "html_regex": "\"api\":\\s*\"[^\"]*graphql\"[\\s\\S]*product\\(slug:\\$slug\\)",
+   "request_url_regex": "/graphql"
+  },
+  "recipe": {
+   "tier": "T0",
+   "steps": [
+    {
+     "name": "page",
+     "method": "GET",
+     "url": "{{page_url}}",
+     "parse": "text",
+     "extract": {
+      "api": {
+       "regex": "\"api\":\\s*\"([^\"]+)\"",
+       "first": true
+      },
+      "query": {
+       "regex": "\"query\":\\s*\"(query Item[^\"]+)\"",
+       "first": true
+      }
+     }
+    },
+    {
+     "name": "data",
+     "method": "POST",
+     "url": "{{origin}}{{api}}",
+     "headers": {
+      "Content-Type": "application/json"
+     },
+     "body": "{\"query\":\"{{query}}\",\"variables\":{\"slug\":\"{{last}}\"}}",
+     "parse": "json"
+    }
+   ],
+   "output": {
+    "title": {
+     "step": "data",
+     "path": "data.product.name",
+     "first": true
+    },
+    "main_text": [
+     {
+      "step": "data",
+      "path": "data.product.name"
+     },
+     {
+      "step": "data",
+      "path": "data.product.description",
+      "split": "\\n+"
+     },
+     {
+      "step": "data",
+      "path": "data.product.attributes",
+      "kv": {
+       "key": "key",
+       "value": "value"
+      }
+     }
+    ],
+    "links": [
+     {
+      "step": "data",
+      "path": "data.product.related[*]",
+      "template": "{{origin}}/products/{{slug}}"
+     }
+    ]
+   }
+  },
+  "source_episode": "28dc9de8b3",
+  "state": "active",
+  "stats": {
+   "tried": 0,
+   "won": 0
+  },
+  "created": 1794929895.2543933
+ },
+ "nextjs_next_data_item": {
+  "id": "nextjs_next_data_item",
+  "description": "Next.js pages exposing item data in script#__NEXT_DATA__ props.pageProps.item (title, body[], specs, related[]).",
+  "detector": {
+   "html_regex": "id=\"__NEXT_DATA__\"[^>]*>\\{\"props\": ?\\{\"pageProps\": ?\\{\"item\""
+  },
+  "recipe": {
+   "tier": "T1",
+   "steps": [
+    {
+     "name": "page",
+     "method": "GET",
+     "url": "{{page_url}}",
+     "parse": "html",
+     "extract": {}
+    }
+   ],
+   "output": {
+    "title": {
+     "css": "script#__NEXT_DATA__",
+     "attr": "text",
+     "json": true,
+     "step": "page",
+     "path": "props.pageProps.item.title",
+     "first": true
+    },
+    "main_text": [
+     {
+      "css": "script#__NEXT_DATA__",
+      "attr": "text",
+      "json": true,
+      "step": "page",
+      "path": "props.pageProps.item.title"
+     },
+     {
+      "css": "script#__NEXT_DATA__",
+      "attr": "text",
+      "json": true,
+      "step": "page",
+      "path": "props.pageProps.item.body[*]"
+     },
+     {
+      "css": "script#__NEXT_DATA__",
+      "attr": "text",
+      "json": true,
+      "step": "page",
+      "path": "props.pageProps.item.specs",
+      "kv": true
+     }
+    ],
+    "links": [
+     {
+      "css": "script#__NEXT_DATA__",
+      "attr": "text",
+      "json": true,
+      "step": "page",
+      "path": "props.pageProps.item.related[*]",
+      "template": "{{origin}}/{{seg0}}/{{id}}/{{slug}}"
+     }
+    ]
+   }
+  },
+  "source_episode": "99a667aa8c",
+  "state": "active",
+  "stats": {
+   "tried": 0,
+   "won": 0
+  },
+  "created": 1794929902.2988827
+ },
+ "api_v1_items_csrf_spa": {
+  "id": "api_v1_items_csrf_spa",
+  "description": "SPA item pages that render via fetch to {api}/items/{id} with optional X-CSRF-Token from meta csrf-token",
+  "detector": {
+   "html_regex": "\"api\":\\s*\"/api/v1\"[\\s\\S]*X-CSRF-Token"
+  },
+  "recipe": {
+   "id": "api_v1_items_csrf_spa",
+   "pattern_id": "playbook",
+   "tier": "T0",
+   "origin": "playbook:api_v1_items_csrf_spa",
+   "steps": [
+    {
+     "name": "page",
+     "method": "GET",
+     "url": "{{page_url}}",
+     "parse": "html",
+     "extract": {
+      "csrf": {
+       "regex": "<head>(?:[\\s\\S]*?name=\"csrf-token\" content=\"([^\"]*)\")?",
+       "first": true
+      }
+     }
+    },
+    {
+     "name": "api",
+     "method": "GET",
+     "url": "{{origin}}/api/v1/items/{{last}}",
+     "headers": {
+      "Accept": "application/json",
+      "X-CSRF-Token": "{{csrf}}",
+      "Referer": "{{page_url}}"
+     },
+     "parse": "json"
+    }
+   ],
+   "output": {
+    "title": {
+     "step": "api",
+     "path": "item.title"
+    },
+    "main_text": [
+     {
+      "step": "api",
+      "path": "item.title"
+     },
+     {
+      "step": "api",
+      "path": "item.paragraphs[*]"
+     },
+     {
+      "step": "api",
+      "path": "item",
+      "template": "price: {{price}}\nsku: {{sku}}\ncategory: {{category}}\nrating: {{rating}}"
+     }
+    ],
+    "links": [
+     {
+      "step": "api",
+      "path": "item.related[*]",
+      "template": "{{origin}}/item/{{id}}"
+     }
+    ]
+   }
+  },
+  "source_episode": "1dfa690c7f",
+  "state": "active",
+  "stats": {
+   "tried": 0,
+   "won": 0
+  },
+  "created": 1794929909.5862014
+ }
+}
